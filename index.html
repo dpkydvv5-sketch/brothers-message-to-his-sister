@@ -85,17 +85,29 @@
       line-height: 2;
     }
 
+    #flowers-container,
+    #butterflies-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .flower {
       position: absolute;
       font-size: 30px;
-      animation: float 6s infinite ease-in-out;
+      animation: float 8s infinite ease-in-out;
       opacity: 0.8;
     }
 
     .butterfly {
       position: absolute;
       font-size: 35px;
-      animation: fly 10s linear infinite;
+      animation: butterflyFly 14s linear infinite;
     }
 
     .stars {
@@ -167,8 +179,19 @@
       50% { transform: translateY(-25px); }
     }
 
-    @keyframes fly {
-      0% { transform: translateX(-100px); }
+    @keyframes butterflyFly {
+      0% {
+        transform: translateX(-10vw) translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateX(50vw) translateY(-60px) rotate(10deg);
+      }
+
+      100% {
+        transform: translateX(110vw) translateY(20px) rotate(-10deg);
+      }
+    }
       100% { transform: translateX(120vw); }
     }
 
@@ -209,6 +232,20 @@
     }
 
     @media(max-width:768px) {
+      body {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      section {
+        padding: 15px;
+      }
+
+      .glass {
+        width: 100%;
+        padding: 18px;
+        border-radius: 25px;
+      }
       h1 {
         font-size: 2.7rem;
       }
@@ -229,17 +266,16 @@
 </head>
 <body>
 
+  <div id="flowers-container"></div>
+  <div id="butterflies-container"></div>
+
   <div class="stars" id="stars"></div>
 
-  <div class="flower" style="top:10%; left:10%;">🌸</div>
-  <div class="flower" style="top:40%; left:80%;">🌷</div>
-  <div class="flower" style="top:75%; left:20%;">💮</div>
-
-  <div class="butterfly" style="top:20%;">🦋</div>
+  
 
   <!-- Opening -->
   <!-- Every section now works like cinematic slides with Next buttons -->
-  <section class="slide">class="slide active">
+  <section class="slide active">
     <div class="glass">
       <h1>For My Sister 💜</h1>
       <p>
@@ -419,6 +455,37 @@
 
     typingEffect();
 
+    // Create Flowers
+    const flowersContainer = document.getElementById('flowers-container');
+
+    const flowerSymbols = ['🌸','🌹','🌺','💮','🌷'];
+
+    for(let i = 0; i < 45; i++) {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.innerHTML = flowerSymbols[Math.floor(Math.random()*flowerSymbols.length)];
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.top = Math.random() * 100 + 'vh';
+      flower.style.fontSize = (20 + Math.random() * 30) + 'px';
+      flower.style.animationDuration = (5 + Math.random() * 8) + 's';
+      flower.style.opacity = Math.random();
+      flowersContainer.appendChild(flower);
+    }
+
+    // Create Butterflies
+    const butterflyContainer = document.getElementById('butterflies-container');
+
+    for(let i = 0; i < 20; i++) {
+      const butterfly = document.createElement('div');
+      butterfly.classList.add('butterfly');
+      butterfly.innerHTML = '🦋';
+      butterfly.style.top = Math.random() * 100 + 'vh';
+      butterfly.style.fontSize = (20 + Math.random() * 25) + 'px';
+      butterfly.style.animationDuration = (10 + Math.random() * 10) + 's';
+      butterfly.style.animationDelay = Math.random() * 8 + 's';
+      butterflyContainer.appendChild(butterfly);
+    }
+
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
@@ -432,7 +499,16 @@
       }
 
       slides[currentSlide].classList.add('active');
-    });
+    }
+
+    // Disable manual scrolling
+    window.addEventListener('wheel', function(e){
+      e.preventDefault();
+    }, { passive:false });
+
+    window.addEventListener('touchmove', function(e){
+      e.preventDefault();
+    }, { passive:false }););
     }
 
     function playMusic() {
@@ -471,5 +547,6 @@
 
 </body>
 </html>
+
 
 
