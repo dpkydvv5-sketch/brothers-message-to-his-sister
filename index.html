@@ -1,177 +1,363 @@
-export default function SisterCinematicWebsite() {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-100 via-purple-100 to-pink-50 text-white overflow-hidden relative font-sans">
-      {/* Background Glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] bg-pink-300 opacity-30 blur-3xl rounded-full top-[-100px] left-[-100px] animate-pulse"></div>
-        <div className="absolute w-[400px] h-[400px] bg-purple-300 opacity-30 blur-3xl rounded-full bottom-[-100px] right-[-100px] animate-pulse"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Sister 💜</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      background: linear-gradient(to bottom, #ffd6e8, #f8c8ff, #cdb4db);
+      color: white;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      max-width: 900px;
+      width: 90%;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #ff4fa3;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: #ff4fa3;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #5a245a;
+      line-height: 2;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 30px;
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.8;
+    }
+
+    .butterfly {
+      position: absolute;
+      font-size: 35px;
+      animation: fly 10s linear infinite;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .timeline-card {
+      background: rgba(255,255,255,0.18);
+      padding: 25px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      animation: slideUp 1.5s ease;
+      transition: 0.4s;
+    }
+
+    .timeline-card:hover {
+      transform: scale(1.04);
+    }
+
+    .music-btn {
+      margin-top: 30px;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 50px;
+      background: #ff4fa3;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1);
+      background: #ff2d92;
+    }
+
+    .final-text {
+      font-size: 4rem;
+      color: #ff4fa3;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-25px); }
+    }
+
+    @keyframes fly {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(120vw); }
+    }
+
+    @keyframes twinkle {
+      0%,100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff;
+      }
+      to {
+        text-shadow: 0 0 30px #ff4fa3;
+      }
+    }
+
+    @media(max-width:768px) {
+      h1 {
+        font-size: 2.7rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .final-text {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="flower" style="top:10%; left:10%;">🌸</div>
+  <div class="flower" style="top:40%; left:80%;">🌷</div>
+  <div class="flower" style="top:75%; left:20%;">💮</div>
+
+  <div class="butterfly" style="top:20%;">🦋</div>
+
+  <!-- Opening -->
+  <section>
+    <div class="glass">
+      <h1>For My Sister 💜</h1>
+      <p>
+        The person who supported me silently,
+        stayed beside me,
+        and made my life better in countless ways.
+      </p>
+    </div>
+  </section>
+
+  <!-- Emotional Section -->
+  <section>
+    <div class="glass">
+      <h2>You Matter 🌸</h2>
+      <p>
+        You are not just my sister.
+        You are my comfort,
+        my support system,
+        and one of the most valuable people in my life.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section>
+    <div class="glass">
+      <h2>Thank You For 💫</h2>
+
+      <div class="timeline">
+        <div class="timeline-card">
+          <p>Thank you for understanding me when I stayed silent.</p>
+        </div>
+
+        <div class="timeline-card">
+          <p>Thank you for supporting me during difficult phases.</p>
+        </div>
+
+        <div class="timeline-card">
+          <p>Thank you for believing in me when I doubted myself.</p>
+        </div>
+
+        <div class="timeline-card">
+          <p>Thank you for making life feel lighter and happier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typing Effect -->
+  <section>
+    <div class="glass">
+      <h2>A Special Message 💌</h2>
+      <p id="typing"></p>
+    </div>
+  </section>
+
+  <!-- Music -->
+  <section>
+    <div class="glass">
+      <h2>Our Vibe 🎵</h2>
+      <p>
+        Every beautiful memory with you
+        is one of the most valuable parts of my life.
+      </p>
+
+      <button class="music-btn" onclick="playMusic()">
+        Play Music 🎶
+      </button>
+
+      <audio id="music" loop>
+        <source src="music.mp3" type="audio/mp3">
+      </audio>
+    </div>
+  </section>
+
+  <!-- Final -->
+  <section>
+    <div class="glass">
+      <div class="final-text">
+        Thank You Sister 💜
       </div>
 
-      {/* Opening Section */}
-      <section className="h-screen flex flex-col justify-center items-center relative z-10 text-center px-6">
-        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-xl animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-pink-700 mb-6 leading-tight">
-            For My Sister 💜
-          </h1>
-          <p className="text-lg md:text-2xl text-purple-800 leading-relaxed">
-            The person who stayed beside me,
-            supported me silently,
-            and made life beautiful.
-          </p>
-        </div>
-
-        <div className="absolute bottom-10 text-pink-600 animate-bounce text-xl">
-          Scroll Down ✨
-        </div>
-      </section>
-
-      {/* Floating Flowers */}
-      <section className="relative py-32 z-10 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-8 shadow-2xl hover:scale-105 transition duration-500">
-            <h2 className="text-4xl font-bold text-pink-700 mb-6">You Matter 🌸</h2>
-            <p className="text-lg text-purple-900 leading-loose">
-              You are not just my sister.
-              You are my comfort, my support system,
-              and one of the most valuable people in my life.
-            </p>
-          </div>
-
-          <div className="relative h-[400px] flex items-center justify-center">
-            <div className="absolute text-8xl animate-spin-slow">🌸</div>
-            <div className="absolute top-10 left-10 text-5xl animate-float">🦋</div>
-            <div className="absolute bottom-10 right-10 text-5xl animate-float-delayed">✨</div>
-            <div className="absolute top-1/2 left-1/2 text-7xl animate-pulse">💖</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-32 relative z-10 px-6">
-        <h2 className="text-center text-5xl font-bold text-pink-700 mb-20">
-          Thank You For... 💫
-        </h2>
-
-        <div className="max-w-4xl mx-auto space-y-12">
-          {[
-            "Understanding me even when I stayed silent.",
-            "Supporting me during difficult phases.",
-            "Believing in me when I doubted myself.",
-            "Always making life feel lighter.",
-          ].map((text, i) => (
-            <div
-              key={i}
-              className={`backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-8 shadow-2xl transition hover:scale-105 ${
-                i % 2 === 0 ? "ml-0 md:ml-0" : "md:ml-32"
-              }`}
-            >
-              <p className="text-xl text-purple-900">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Typing Message Section */}
-      <section className="py-32 flex justify-center items-center px-6 relative z-10">
-        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-10 shadow-2xl max-w-3xl text-center">
-          <h2 className="text-4xl font-bold text-pink-700 mb-6">A Message 💌</h2>
-          <p className="text-2xl text-purple-900 leading-relaxed animate-pulse">
-            “I may not always express it...
-            but I truly appreciate everything you do for me.”
-          </p>
-        </div>
-      </section>
-
-      {/* Interactive Garden */}
-      <section className="py-32 relative z-10 text-center px-6">
-        <h2 className="text-5xl font-bold text-pink-700 mb-8">
-          Touch The Magic 🌸
-        </h2>
-        <p className="text-xl text-purple-900 mb-10">
-          Imagine flowers blooming wherever you touch.
-        </p>
-
-        <div className="flex justify-center gap-8 text-7xl animate-float flex-wrap">
-          <span>🌸</span>
-          <span>✨</span>
-          <span>🦋</span>
-          <span>💖</span>
-          <span>🌷</span>
-        </div>
-      </section>
-
-      {/* Music Section */}
-      <section className="py-32 relative z-10 text-center px-6">
-        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-10 shadow-2xl max-w-xl mx-auto">
-          <h2 className="text-4xl font-bold text-pink-700 mb-6">Our Vibe 🎵</h2>
-          <button className="bg-pink-500 hover:bg-pink-600 transition px-8 py-4 rounded-full text-xl shadow-xl">
-            Play Music 🎶
-          </button>
-        </div>
-      </section>
-
-      {/* Thank You Reveal */}
-      <section className="h-screen flex flex-col justify-center items-center relative z-10 text-center px-6">
-        <div className="text-6xl md:text-8xl font-bold text-pink-700 animate-pulse leading-tight">
-          Thank You
-          <br />
-          Sister 💜
-        </div>
-
-        <div className="mt-10 text-6xl animate-bounce">🌸✨🦋</div>
-      </section>
-
-      {/* Final Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center relative z-10 text-center px-6 pb-32">
-        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-10 shadow-2xl max-w-4xl">
-          <h2 className="text-5xl font-bold text-pink-700 mb-8">
-            Final Message 🌌
-          </h2>
-
-          <p className="text-2xl text-purple-900 leading-loose">
-            No matter where life takes us,
-            you will always remain one of the most important
-            and special people in my journey.
-            <br /><br />
-            Thank you for every sacrifice,
-            every smile,
-            every moment,
-            and every bit of support.
-          </p>
-
-          <div className="mt-10 text-xl text-pink-700">
-            Made with love by your brother 💜
-          </div>
-        </div>
-      </section>
-
-      <style>{`
-        @keyframes float {
-          0%,100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeIn {
-          from { opacity:0; transform:translateY(20px); }
-          to { opacity:1; transform:translateY(0); }
-        }
-
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-
-        .animate-float-delayed {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-spin-slow {
-          animation: spin 15s linear infinite;
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 2s ease forwards;
-        }
-      `}</style>
+      <p style="margin-top:30px;">
+        No matter where life takes us,
+        you will always remain one of the most important
+        and special people in my life.
+        <br><br>
+        Made with love by your brother 🌸
+      </p>
     </div>
-  );
-} 
+  </section>
+
+  <script>
+    const text = "I may not always express it... but I truly appreciate everything you do for me.";
+    let i = 0;
+
+    function typingEffect() {
+      if (i < text.length) {
+        document.getElementById('typing').innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 50);
+      }
+    }
+
+    typingEffect();
+
+    function playMusic() {
+      document.getElementById('music').play();
+    }
+
+    // Stars
+    const starsContainer = document.getElementById('stars');
+
+    for(let i = 0; i < 120; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      starsContainer.appendChild(star);
+    }
+
+    // Touch Flowers
+    document.addEventListener('click', function(e) {
+      const flower = document.createElement('div');
+      flower.innerHTML = '🌸';
+      flower.style.position = 'absolute';
+      flower.style.left = e.pageX + 'px';
+      flower.style.top = e.pageY + 'px';
+      flower.style.fontSize = '35px';
+      flower.style.pointerEvents = 'none';
+      flower.style.animation = 'float 3s ease-out forwards';
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
+
