@@ -1,0 +1,177 @@
+export default function SisterCinematicWebsite() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-pink-100 via-purple-100 to-pink-50 text-white overflow-hidden relative font-sans">
+      {/* Background Glow */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute w-[500px] h-[500px] bg-pink-300 opacity-30 blur-3xl rounded-full top-[-100px] left-[-100px] animate-pulse"></div>
+        <div className="absolute w-[400px] h-[400px] bg-purple-300 opacity-30 blur-3xl rounded-full bottom-[-100px] right-[-100px] animate-pulse"></div>
+      </div>
+
+      {/* Opening Section */}
+      <section className="h-screen flex flex-col justify-center items-center relative z-10 text-center px-6">
+        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-xl animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold text-pink-700 mb-6 leading-tight">
+            For My Sister 💜
+          </h1>
+          <p className="text-lg md:text-2xl text-purple-800 leading-relaxed">
+            The person who stayed beside me,
+            supported me silently,
+            and made life beautiful.
+          </p>
+        </div>
+
+        <div className="absolute bottom-10 text-pink-600 animate-bounce text-xl">
+          Scroll Down ✨
+        </div>
+      </section>
+
+      {/* Floating Flowers */}
+      <section className="relative py-32 z-10 px-6">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-8 shadow-2xl hover:scale-105 transition duration-500">
+            <h2 className="text-4xl font-bold text-pink-700 mb-6">You Matter 🌸</h2>
+            <p className="text-lg text-purple-900 leading-loose">
+              You are not just my sister.
+              You are my comfort, my support system,
+              and one of the most valuable people in my life.
+            </p>
+          </div>
+
+          <div className="relative h-[400px] flex items-center justify-center">
+            <div className="absolute text-8xl animate-spin-slow">🌸</div>
+            <div className="absolute top-10 left-10 text-5xl animate-float">🦋</div>
+            <div className="absolute bottom-10 right-10 text-5xl animate-float-delayed">✨</div>
+            <div className="absolute top-1/2 left-1/2 text-7xl animate-pulse">💖</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-32 relative z-10 px-6">
+        <h2 className="text-center text-5xl font-bold text-pink-700 mb-20">
+          Thank You For... 💫
+        </h2>
+
+        <div className="max-w-4xl mx-auto space-y-12">
+          {[
+            "Understanding me even when I stayed silent.",
+            "Supporting me during difficult phases.",
+            "Believing in me when I doubted myself.",
+            "Always making life feel lighter.",
+          ].map((text, i) => (
+            <div
+              key={i}
+              className={`backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-8 shadow-2xl transition hover:scale-105 ${
+                i % 2 === 0 ? "ml-0 md:ml-0" : "md:ml-32"
+              }`}
+            >
+              <p className="text-xl text-purple-900">{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Typing Message Section */}
+      <section className="py-32 flex justify-center items-center px-6 relative z-10">
+        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-10 shadow-2xl max-w-3xl text-center">
+          <h2 className="text-4xl font-bold text-pink-700 mb-6">A Message 💌</h2>
+          <p className="text-2xl text-purple-900 leading-relaxed animate-pulse">
+            “I may not always express it...
+            but I truly appreciate everything you do for me.”
+          </p>
+        </div>
+      </section>
+
+      {/* Interactive Garden */}
+      <section className="py-32 relative z-10 text-center px-6">
+        <h2 className="text-5xl font-bold text-pink-700 mb-8">
+          Touch The Magic 🌸
+        </h2>
+        <p className="text-xl text-purple-900 mb-10">
+          Imagine flowers blooming wherever you touch.
+        </p>
+
+        <div className="flex justify-center gap-8 text-7xl animate-float flex-wrap">
+          <span>🌸</span>
+          <span>✨</span>
+          <span>🦋</span>
+          <span>💖</span>
+          <span>🌷</span>
+        </div>
+      </section>
+
+      {/* Music Section */}
+      <section className="py-32 relative z-10 text-center px-6">
+        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-10 shadow-2xl max-w-xl mx-auto">
+          <h2 className="text-4xl font-bold text-pink-700 mb-6">Our Vibe 🎵</h2>
+          <button className="bg-pink-500 hover:bg-pink-600 transition px-8 py-4 rounded-full text-xl shadow-xl">
+            Play Music 🎶
+          </button>
+        </div>
+      </section>
+
+      {/* Thank You Reveal */}
+      <section className="h-screen flex flex-col justify-center items-center relative z-10 text-center px-6">
+        <div className="text-6xl md:text-8xl font-bold text-pink-700 animate-pulse leading-tight">
+          Thank You
+          <br />
+          Sister 💜
+        </div>
+
+        <div className="mt-10 text-6xl animate-bounce">🌸✨🦋</div>
+      </section>
+
+      {/* Final Section */}
+      <section className="min-h-screen flex flex-col justify-center items-center relative z-10 text-center px-6 pb-32">
+        <div className="backdrop-blur-xl bg-white/20 border border-white/20 rounded-3xl p-10 shadow-2xl max-w-4xl">
+          <h2 className="text-5xl font-bold text-pink-700 mb-8">
+            Final Message 🌌
+          </h2>
+
+          <p className="text-2xl text-purple-900 leading-loose">
+            No matter where life takes us,
+            you will always remain one of the most important
+            and special people in my journey.
+            <br /><br />
+            Thank you for every sacrifice,
+            every smile,
+            every moment,
+            and every bit of support.
+          </p>
+
+          <div className="mt-10 text-xl text-pink-700">
+            Made with love by your brother 💜
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @keyframes float {
+          0%,100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeIn {
+          from { opacity:0; transform:translateY(20px); }
+          to { opacity:1; transform:translateY(0); }
+        }
+
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-spin-slow {
+          animation: spin 15s linear infinite;
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 2s ease forwards;
+        }
+      `}</style>
+    </div>
+  );
+} 
